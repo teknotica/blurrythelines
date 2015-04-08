@@ -1,0 +1,20 @@
+{
+    "name" : "FilmSite",
+    "version" : "0.1.0",
+    "author" : "Silvia Rebelo",
+    "private" : true,
+    "devDependencies" : {
+        "grunt" :                   "~0.4.0",
+        "grunt-angular-templates":  "*", 
+        "grunt-contrib-sass":       "*",
+        "grunt-contrib-compass":    "*",
+        "grunt-contrib-uglify":     "*",
+        "grunt-contrib-watch":      "*",
+        "grunt-contrib-jshint":     "*",
+        "grunt-contrib-concat":     "*",
+        "grunt-contrib-clean":      "*",
+        "grunt-contrib-uglify":     "*",
+        "grunt-htmlhint":           "*",
+        "matchdep":                 "*"
+    }
+}

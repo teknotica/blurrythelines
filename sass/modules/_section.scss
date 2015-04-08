@@ -1,0 +1,112 @@
+
+.container {
+    
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    z-index: 1;
+    background: #1C1C1C;
+    height: 100%;
+
+    .loading {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: #1B1C1D;
+        z-index: -1;
+        opacity: 0; 
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -32px;
+            margin-top: -32px;
+        }       
+    }
+
+    #header {
+
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        z-index: 2;
+
+        ul {
+            margin: 0;
+            padding: 30px 0;
+            text-align: center;
+
+            li {
+                list-style: none;
+                margin-right: 15px;
+                display: inline-block;
+            }
+        }
+    }
+
+    .page {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include transition(opacity ease-in-out 500ms);        
+
+        &.ng-leave.ng-leave-active {            
+            @include animation(fadeOut, 1s, ease, .5s, forwards);
+        }
+
+        &.ng-enter.ng-enter-active {
+            @include animation(fadeIn, 1s, ease, 0, forwards);
+        }
+
+        &.ng-animate {            
+            .loading {
+                //@include animation(fadeInOut, 3.5s, ease, 0, forwards);
+            }
+        }
+
+        .section {        
+
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            padding: 30px;        
+
+            &.intro {
+                background: url('../../images/sections/intro.jpg') 0 0 no-repeat;
+                background-size: cover;
+            }
+
+            &.gallery {
+                background-color: #181818;
+            }
+
+            &.synopsis {
+                background: url('../../images/sections/synopsis.jpg') 0 0 no-repeat;
+                background-size: cover;
+
+                video#intro-video {
+                    position: fixed; 
+                    right: 0; 
+                    bottom: 0;
+                    min-width: 100%; 
+                    min-height: 100%;
+                    width: auto; 
+                    height: auto; 
+                    z-index: -100;
+                    background: url('../../images/home-cover.jpg') no-repeat;
+                    background-size: cover;
+                }
+            }
+        }
+    }
+    
+}

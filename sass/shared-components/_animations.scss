@@ -1,0 +1,46 @@
+
+@include keyframes(fadeOut) {
+    from { 
+    	opacity:1; 
+   	}
+    to { 
+    	opacity:0; 
+    }
+}
+
+@include keyframes(fadeIn) {
+	from {
+    	opacity: 0;
+  	}
+  	to {
+    	opacity: 1;
+  	} 
+}
+
+@include keyframes(fadeInOut) {
+	0% {
+    	opacity: 0;
+  	}
+  	30% {
+    	opacity: 1;
+    	z-index: 3;
+  	} 
+	100% {
+    	opacity: 0;
+    	z-index: -1;
+  	} 
+}
+
+@include keyframes(scaleDown) {
+	from { }
+	to { 
+		@include transform(scale(.8));
+	}
+}
+
+@include keyframes(scaleUpDown) {
+	from { 
+		@include transform(scale(1.2));
+	}
+}
+
