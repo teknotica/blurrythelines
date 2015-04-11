@@ -13,6 +13,7 @@
 "core/_settings", // Set up your settings and variables first
 "core/_mixins",
 "core/_grid",
+"core/_elf",
 "core/_base",
 "core/_states",
 "core/_layout",
@@ -33,14 +34,16 @@
 "shared-components/_tables",
 "shared-components/_tabs",
 "shared-components/_animations",
-
+"shared-components/_nav",
 
 // Modules
 // Modules are connected to a specific piece of content and can't be used without that piece of content.
 // Example: the module 'product' can't be used for a 'blog-article'.
 
-"modules/_section",
-"modules/_gallery",
+"pages/_global",
+"pages/_intro",
+"pages/_gallery",
+"pages/_synopsis",
 
 
 // Print

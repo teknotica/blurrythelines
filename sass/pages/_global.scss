@@ -1,0 +1,63 @@
+.container {
+    
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    z-index: 1;
+    background: #1C1C1C;
+    height: 100%;
+
+    .loading {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: #1B1C1D;
+        z-index: -1;
+        opacity: 0; 
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -32px;
+            margin-top: -32px;
+        }       
+    }
+
+    .page {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include transition(opacity ease-in-out 500ms);        
+
+        &.ng-leave.ng-leave-active {            
+            @include animation(fadeOut, 1s, ease, .5s, forwards);
+        }
+
+        &.ng-enter.ng-enter-active {
+            @include animation(fadeIn, 1s, ease, 0, forwards);
+        }
+
+        &.ng-animate {            
+            .loading {
+                //@include animation(fadeInOut, 3.5s, ease, 0, forwards);
+            }
+        }
+
+        .section {        
+
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            padding: 100px 30px 30px 30px;        
+        }
+    }
+    
+}

@@ -30,6 +30,11 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
     "      <img src=\"images/vfx/1_1.jpg\" />\n" +
     "      <img src=\"images/vfx/1_2.jpg\" />\n" +
     "    </div>\n" +
+    "\n" +
+    "    <div class=\"twentytwenty-container\" twentytwenty>\n" +
+    "      <img src=\"images/vfx/1_1.jpg\" />\n" +
+    "      <img src=\"images/vfx/1_2.jpg\" />\n" +
+    "    </div>\n" +
     "    \n" +
     "<!--     <video autoplay poster=\"images/home-cover.jpg\" id=\"intro-video\">\n" +
     "        <source src=\"images/intro.mp4\" type=\"video/mp4\">\n" +

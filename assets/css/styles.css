@@ -1,3 +1,52 @@
+/**
+ * Return the configured layout direction for floats etc.
+ * @return {string} - The direction in left/right format.
+ */
+/**
+ * Return the opposite of the configured layout direction for floats etc.
+ * @return {string} - The direction in left/right format.
+ */
+/**
+ * Set up the layout direction.
+ */
+/**
+ * Enable debugging environment that applies a translucent background to every element on the page.
+ * @param {string} [$color:blue] - The color to be lightened in the debugging environment.
+ */
+/**
+ * Set an element's width and margin-right gutter by ratio.
+ * @param {number} [$ratio:1] - A width relative to its container as a fraction.
+ * @param {string} [$gutter:$elf-gutter] - Specify the gutter width as any unit.
+ */
+/**
+ * Make elements automatically drop down a row when the specified item is reached.
+ * @param {number} [$item:0] - Item to be the last in the row.
+ * @param {string} [$uncycle:0] - Cycle to be reset. Useful in media queries.
+ * @param {string} [$gutter:$elf-gutter] - Specify the gutter width as any unit.
+ */
+/**
+ * Offset elements from one another.
+ * @param {number} [$ratio:0] - Fraction to be used to offset.
+ * @param {boolean} [$column:true] - Are you offsetting a column?
+ * @param {string} [$gutter:$elf-gutter] - Specify the gutter width as any unit.
+ */
+/**
+ * Set an element's width as a fraction.
+ * @param {number} [$ratio:1] - A width relative to its container as a fraction.
+ */
+/**
+ * Useful for source ordering. Shift elements to the left and right with positive and negative integers.
+ * @param {number} [$ratio:0] - Fraction to be used in the shift.
+ * @param {boolean} [$column:true] - Are you shifting a column?
+ * @param {string} [$gutter:$elf-gutter] - Specify the gutter width as any unit.
+ */
+/**
+ * Useful for source ordering. Removes affects applied by shift().
+ */
+/**
+ * Apply this mixin to containing elements in order to add flexbox centering to any element.
+ * @param {string} [$direction:both] - Accepts 'both', 'vertical', or 'horizontal'.
+ */
 /* line 3, ../../sass/core/_base.scss */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -1138,7 +1187,28 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
     transform: scale(1.2);
   }
 }
-/* line 2, ../../sass/modules/_section.scss */
+/* line 1, ../../sass/shared-components/_nav.scss */
+#header {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  z-index: 2;
+}
+/* line 9, ../../sass/shared-components/_nav.scss */
+#header ul {
+  margin: 0;
+  padding: 30px 0;
+  text-align: center;
+}
+/* line 14, ../../sass/shared-components/_nav.scss */
+#header ul li {
+  list-style: none;
+  margin-right: 15px;
+  display: inline-block;
+}
+
+/* line 1, ../../sass/pages/_global.scss */
 .container {
   position: relative;
   left: 0;
@@ -1150,7 +1220,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   background: #1C1C1C;
   height: 100%;
 }
-/* line 14, ../../sass/modules/_section.scss */
+/* line 13, ../../sass/pages/_global.scss */
 .container .loading {
   position: absolute;
   width: 100%;
@@ -1161,7 +1231,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   z-index: -1;
   opacity: 0;
 }
-/* line 24, ../../sass/modules/_section.scss */
+/* line 23, ../../sass/pages/_global.scss */
 .container .loading img {
   position: absolute;
   top: 50%;
@@ -1169,27 +1239,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   margin-left: -32px;
   margin-top: -32px;
 }
-/* line 33, ../../sass/modules/_section.scss */
-.container #header {
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background: transparent;
-  z-index: 2;
-}
-/* line 41, ../../sass/modules/_section.scss */
-.container #header ul {
-  margin: 0;
-  padding: 30px 0;
-  text-align: center;
-}
-/* line 46, ../../sass/modules/_section.scss */
-.container #header ul li {
-  list-style: none;
-  margin-right: 15px;
-  display: inline-block;
-}
-/* line 54, ../../sass/modules/_section.scss */
+/* line 32, ../../sass/pages/_global.scss */
 .container .page {
   width: 100%;
   height: 100%;
@@ -1200,7 +1250,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   -moz-transition: opacity ease-in-out 500ms;
   transition: opacity ease-in-out 500ms;
 }
-/* line 62, ../../sass/modules/_section.scss */
+/* line 40, ../../sass/pages/_global.scss */
 .container .page.ng-leave.ng-leave-active {
   -webkit-animation-name: fadeOut;
   -moz-animation-name: fadeOut;
@@ -1218,7 +1268,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   -moz-animation-fill-mode: forwards;
   -ms-animation-fill-mode: forwards;
 }
-/* line 66, ../../sass/modules/_section.scss */
+/* line 44, ../../sass/pages/_global.scss */
 .container .page.ng-enter.ng-enter-active {
   -webkit-animation-name: fadeIn;
   -moz-animation-name: fadeIn;
@@ -1236,29 +1286,81 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   -moz-animation-fill-mode: forwards;
   -ms-animation-fill-mode: forwards;
 }
-/* line 76, ../../sass/modules/_section.scss */
+/* line 54, ../../sass/pages/_global.scss */
 .container .page .section {
   position: relative;
   overflow: hidden;
   height: 100%;
-  padding: 30px;
+  padding: 100px 30px 30px 30px;
 }
-/* line 83, ../../sass/modules/_section.scss */
-.container .page .section.intro {
+
+/* line 5, ../../sass/pages/_intro.scss */
+.container .section.intro {
   background: url("../../images/sections/intro.jpg") 0 0 no-repeat;
   background-size: cover;
 }
-/* line 88, ../../sass/modules/_section.scss */
-.container .page .section.gallery {
+
+/* line 5, ../../sass/pages/_gallery.scss */
+.container .section.gallery {
   background-color: #181818;
 }
-/* line 92, ../../sass/modules/_section.scss */
-.container .page .section.synopsis {
+/* line 9, ../../sass/pages/_gallery.scss */
+.container .section.gallery .gallery-wrapper {
+  margin-top: 100px;
+}
+/* line 15, ../../sass/pages/_gallery.scss */
+.container .section.gallery .gallery-wrapper ul li {
+  list-style: none;
+  display: inline-block;
+}
+/* line 19, ../../sass/pages/_gallery.scss */
+.container .section.gallery .gallery-wrapper ul li a {
+  display: block;
+  width: 300px;
+  height: 201px;
+}
+/* line 28, ../../sass/pages/_gallery.scss */
+.container .section.gallery #zoomImage {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /*background: url('http://thecongress-movie.com/files/templates/congress/public/assets/img/ajax-loader.gif?v=1') no-repeat center rgba(0,0,0,.8);*/
+  z-index: 1000;
+  text-align: left;
+  cursor: url("../../images/close.png"), default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+/* line 42, ../../sass/pages/_gallery.scss */
+.container .section.gallery #zoomImage .zoomInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+/* line 50, ../../sass/pages/_gallery.scss */
+.container .section.gallery #zoomImage .zoomInner .zoomItem {
+  background-size: cover;
+  background-position: 50% 50% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* line 6, ../../sass/pages/_synopsis.scss */
+.container .section.synopsis {
   background: url("../../images/sections/synopsis.jpg") 0 0 no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
-/* line 96, ../../sass/modules/_section.scss */
-.container .page .section.synopsis video#intro-video {
+/* line 12, ../../sass/pages/_synopsis.scss */
+.container .section.synopsis video#intro-video {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -1270,55 +1372,20 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   background: url("../../images/home-cover.jpg") no-repeat;
   background-size: cover;
 }
-
-/* line 2, ../../sass/modules/_gallery.scss */
-.gallery-wrapper {
-  margin-top: 100px;
+/* line 25, ../../sass/pages/_synopsis.scss */
+.container .section.synopsis .twentytwenty-wrapper {
+  float: left;
+  width: calc(100% * 0.33333 - 30px + 0.33333 * 30px);
+  margin-right: 30px;
+  margin-bottom: 30px;
 }
-/* line 8, ../../sass/modules/_gallery.scss */
-.gallery-wrapper ul li {
-  list-style: none;
-  display: inline-block;
+/* line 47, ../../sass/core/_elf.scss */
+.container .section.synopsis .twentytwenty-wrapper:last-child {
+  margin-right: 0;
 }
-/* line 12, ../../sass/modules/_gallery.scss */
-.gallery-wrapper ul li a {
-  display: block;
-  width: 300px;
-  height: 201px;
-}
-
-/* line 21, ../../sass/modules/_gallery.scss */
-#zoomImage {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: url("http://thecongress-movie.com/files/templates/congress/public/assets/img/ajax-loader.gif?v=1") no-repeat center rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  text-align: left;
-  cursor: url("../../images/close.png"), default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-}
-/* line 35, ../../sass/modules/_gallery.scss */
-#zoomImage .zoomInner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-}
-/* line 43, ../../sass/modules/_gallery.scss */
-#zoomImage .zoomInner .zoomItem {
-  background-size: cover;
-  background-position: 50% 50% !important;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+/* line 65, ../../sass/core/_elf.scss */
+.container .section.synopsis .twentytwenty-wrapper:nth-child(3n) {
+  margin-right: 0;
 }
 
 @media print {
