@@ -7,8 +7,16 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            css: ['assets/css'],
+            css: ['assets/css/*.css', '!assets/css/vendor/*.css'],
             js: ['assets/js']
+        },
+
+        ngAnnotate: {
+            compile: {
+                files: {
+                    'assets/js/main.js': 'assets/js/main.js'
+                }
+            }
         },
 
         ngtemplates:  {
@@ -19,7 +27,7 @@ module.exports = function(grunt) {
                 src:      'js/app/templates/*.html',
                 dest:     'js/app/templates/templates.js'
             }
-        },
+        }, 
         
         concat: {
            options: {
@@ -27,16 +35,27 @@ module.exports = function(grunt) {
            },
            js: {
                src: [
+                   'js/vendor/jquery.js',
+                   'js/vendor/jquery.event.move.js',
+                   'js/vendor/jquery.twentytwenty.js',
                    'js/vendor/angular.js',
                    'js/vendor/angular-route.js',
                    'js/vendor/angular-animate.js',
                    'js/app/app.js',
                    'js/app/routes.js',
                    'js/app/constants.js',
-                   'js/app/*/*.js',
-                   'js/app/*/*/*.js'
+                   'js/app/directives/*.js',
+                   'js/app/directives/**/*.js',
+                   'js/app/controllers/*.js'
                ],
                dest: 'assets/js/main.js'
+           },
+           css: {
+                src: [
+                    'assets/css/vendor/*',
+                    'assets/css/styles.css'
+               ],
+               dest: 'assets/css/main.css' 
            }
        },
 
@@ -64,12 +83,13 @@ module.exports = function(grunt) {
        watch: {
        		scripts: {
 	            files: [
-	                'js/vendor/*.js', 
-                  'js/app/*.js', 
-                  'js/app/**/*.js',
-                  'js/app/templates/*.html'
+    	            'js/vendor/*.js', 
+                    'js/app/*.js', 
+                    'js/app/**/*.js',
+                    'js/app/**/**/*.js',
+                    'js/app/templates/*.html'
 	            ],
-	            tasks: ['ngtemplates', 'concat:js', 'uglify']
+	            tasks: ['ngtemplates', 'concat:js', 'ngAnnotate', 'uglify']
 	        },
 	        css: {
                 files: [
@@ -77,12 +97,12 @@ module.exports = function(grunt) {
                     'sass/*/*.scss', 
                     'sass/*/*/*.scss'
                 ],
-                tasks: ['clean:css', 'compass']
+                tasks: ['clean:css', 'compass', 'concat:css']
             }
        }
 
     });
 
-    grunt.registerTask('dev', ['clean', 'ngtemplates', 'concat', 'compass', 'uglify', 'watch']);
+    grunt.registerTask('dev', ['clean', 'ngtemplates', 'compass', 'concat', 'ngAnnotate', 'uglify', 'watch']);
 
 };

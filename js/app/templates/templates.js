@@ -2,7 +2,6 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('js/app/templates/gallery.html',
-    "\n" +
     "<section class=\"section gallery\">\n" +
     "\t<gallery data=\"images\"></gallery>\n" +
     "</section>"
@@ -10,11 +9,6 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('js/app/templates/intro.html',
-    "\n" +
-    "<div class=\"loading\">\n" +
-    "\t<img src=\"images/loading.svg\" width=\"64\" height=\"64\">\n" +
-    "</div>\n" +
-    "\n" +
     "<section class=\"section intro\"></section>"
   );
 
@@ -30,12 +24,12 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('js/app/templates/synopsis.html',
-    "\n" +
-    "<div class=\"loading\">\n" +
-    "\t<img src=\"images/loading.svg\" width=\"64\" height=\"64\">\n" +
-    "</div>\n" +
-    "\n" +
     "<section class=\"section synopsis\">\n" +
+    "\n" +
+    "    <div class=\"twentytwenty-container\" twentytwenty>\n" +
+    "      <img src=\"images/vfx/1_1.jpg\" />\n" +
+    "      <img src=\"images/vfx/1_2.jpg\" />\n" +
+    "    </div>\n" +
     "    \n" +
     "<!--     <video autoplay poster=\"images/home-cover.jpg\" id=\"intro-video\">\n" +
     "        <source src=\"images/intro.mp4\" type=\"video/mp4\">\n" +
