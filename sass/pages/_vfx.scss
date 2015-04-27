@@ -1,0 +1,24 @@
+
+.container {
+    
+    .section {          
+
+        &.vfx {
+    
+            opacity: 0;
+            @include animation(fadeIn, 1s, ease, .3s, forwards);     
+        	// background: url('../../images/sections/vfx.jpg') 0 0 no-repeat;
+        	// background-size: cover;
+        	// overflow: hidden;
+
+            .twentytwenty-wrapper {
+                        	
+            	@include column(1/3);
+            	@include cycle(3);
+            	margin-bottom: 30px;
+
+            }                       
+
+        }
+    }
+}            

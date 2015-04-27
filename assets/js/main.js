@@ -39177,6 +39177,10 @@ angular.module('filmsiteApp')
 					templateUrl: 'js/app/templates/synopsis.html',
 					controller: 'synopsisController'
 				})
+				.when('/vfx', {
+					templateUrl: 'js/app/templates/vfx.html',
+					controller: 'vfxController'
+				})
 				.otherwise({
 					redirectTo: '/intro'
 				});
@@ -39280,7 +39284,18 @@ angular.module('filmsiteApp')
 	.controller('galleryController', ['$scope', function ($scope) {
 		
 		$scope.pageClass = 'page-gallery';
-		$scope.images = ["gallery-1.jpg", "gallery-2.jpg", "gallery-3.jpg"];
+		$scope.galleryImages = [];
+		$scope.imagesReady = false;
+
+		// Dynamically generates images array
+		$scope.getImagesArray = function() {
+			
+			var galleryLength = 4;			
+			for (var i = 1; i <= galleryLength; i++) {
+				$scope.galleryImages.push('gallery-' + i + '.jpg');
+			};
+			$scope.imagesReady = true;
+		}();
 		
 	}])
 
@@ -39294,7 +39309,7 @@ angular.module('filmsiteApp')
 
 angular.module('filmsiteApp').
 	controller('mainController', ['$scope', function ($scope) {
-		
+
 	}])
 
 
@@ -39303,5 +39318,13 @@ angular.module('filmsiteApp')
 	.controller('synopsisController', ['$scope', function ($scope) {
 		
 		$scope.pageClass = 'page-synopsis';	
+		
+	}])
+
+angular.module('filmsiteApp')
+	
+	.controller('vfxController', ['$scope', function ($scope) {
+		
+		$scope.pageClass = 'page-vfx';
 		
 	}])

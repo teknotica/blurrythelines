@@ -4,6 +4,8 @@
 
         &.gallery {
             
+            opacity: 0;
+            @include animation(fadeIn, 1s, ease, .3s, forwards);     
             background-color: #181818;
 
             .gallery-wrapper {
@@ -32,10 +34,10 @@
             	top: 0;
             	right: 0;
             	bottom: 0;
-            	/*background: url('http://thecongress-movie.com/files/templates/congress/public/assets/img/ajax-loader.gif?v=1') no-repeat center rgba(0,0,0,.8);*/
+            	background: url('../../images/utils/loading.gif') no-repeat center;
             	z-index: 1000;
             	text-align: left;
-            	cursor: url('../../images/close.png'), default;
+            	cursor: url('../../images/utils/close.png'), default;
             	-webkit-user-select: none;
             	-moz-user-select: none;
 

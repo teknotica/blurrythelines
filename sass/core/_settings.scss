@@ -1,5 +1,18 @@
 // =========== Settings
 
+@font-face {
+    font-family: 'airship_27regular';
+    src: url('../../fonts/airship_27/airship_27-regular-webfont.eot');
+    src: url('../../fonts/airship_27/airship_27-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/airship_27/airship_27-regular-webfont.woff2') format('woff2'),
+         url('../../fonts/airship_27/airship_27-regular-webfont.woff') format('woff'),
+         url('../../fonts/airship_27/airship_27-regular-webfont.ttf') format('truetype'),
+         url('../../fonts/airship_27/airship_27-regular-webfont.svg#airship_27regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 // Most of the variables are based on some kind of percentages to maintain stability.
 // So $variable-10 is small or light and $variable-100 is big or dark.
 
@@ -57,9 +70,9 @@ $z-index-30: 30;
 // Add your own color variables
 
 // Color brand
-$color-brand-40: #29c882;
-$color-brand-50: #09a25f; // Default
-$color-brand-60: #038049;
+$color-brand-40: #ffffff;
+$color-brand-50: #ffffff; // Default
+$color-brand-60: #ffffff;
 
 // Color success
 $color-success-50: #39b924; // Default

@@ -204,6 +204,13 @@
   bottom: 50%;
   margin-bottom: -17px; }
 
+@font-face {
+  font-family: 'airship_27regular';
+  src: url("../../fonts/airship_27/airship_27-regular-webfont.eot");
+  src: url("../../fonts/airship_27/airship_27-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/airship_27/airship_27-regular-webfont.woff2") format("woff2"), url("../../fonts/airship_27/airship_27-regular-webfont.woff") format("woff"), url("../../fonts/airship_27/airship_27-regular-webfont.ttf") format("truetype"), url("../../fonts/airship_27/airship_27-regular-webfont.svg#airship_27regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 /**
  * Return the configured layout direction for floats etc.
  * @return {string} - The direction in left/right format.
@@ -356,13 +363,13 @@ p.lead {
 
 /* line 66, ../../sass/core/_base.scss */
 a {
-  color: #09a25f;
+  color: #ffffff;
   cursor: pointer;
   text-decoration: none;
 }
 /* line 71, ../../sass/core/_base.scss */
 a:hover {
-  color: #038049;
+  color: #ffffff;
 }
 
 /* line 76, ../../sass/core/_base.scss */
@@ -641,14 +648,14 @@ button:focus, .button--neutral:focus, .button--success:focus, .button--alert:foc
 .button,
 input[type=submit],
 button {
-  background: #09a25f;
+  background: #ffffff;
   color: #fff;
 }
 /* line 39, ../../sass/shared-components/_buttons.scss */
 .button:hover,
 input[type=submit]:hover,
 button:hover {
-  background: #038049;
+  background: #ffffff;
   color: #fff;
 }
 /* line 44, ../../sass/shared-components/_buttons.scss */
@@ -952,7 +959,7 @@ li.form--error ul.form--errors li {
 
 /* line 10, ../../sass/shared-components/_labels.scss */
 .label {
-  background: #09a25f;
+  background: #ffffff;
   color: #fff;
 }
 
@@ -997,7 +1004,7 @@ div.message--alert {
 /* line 17, ../../sass/shared-components/_messages.scss */
 li.message,
 div.message {
-  background: #09a25f;
+  background: #ffffff;
   color: #fff;
 }
 
@@ -1041,12 +1048,12 @@ ul.pagination li.pagination--gap {
 }
 /* line 19, ../../sass/shared-components/_pagination.scss */
 ul.pagination li.is-selected a {
-  background: #09a25f;
+  background: #ffffff;
   color: #fff;
 }
 /* line 23, ../../sass/shared-components/_pagination.scss */
 ul.pagination li.is-selected a:hover {
-  background: #038049;
+  background: #ffffff;
   color: #fff;
 }
 /* line 28, ../../sass/shared-components/_pagination.scss */
@@ -1081,7 +1088,7 @@ ul.pagination a:active, ul.pagination a:focus {
 
 /* line 10, ../../sass/shared-components/_panels.scss */
 .panel--callout {
-  background: #09a25f;
+  background: #ffffff;
   color: #fff;
 }
 
@@ -1199,13 +1206,13 @@ div.tabs a:active, div.tabs a:focus {
 }
 /* line 40, ../../sass/shared-components/_tabs.scss */
 div.tabs li.is-selected a {
-  background: #09a25f;
+  background: #ffffff;
   color: #fff;
   font-weight: bold;
 }
 /* line 45, ../../sass/shared-components/_tabs.scss */
 div.tabs li.is-selected a:hover {
-  background: #038049;
+  background: #ffffff;
   color: #fff;
 }
 /* line 50, ../../sass/shared-components/_tabs.scss */
@@ -1427,25 +1434,24 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   height: 100%;
 }
 /* line 13, ../../sass/pages/_global.scss */
-.container .loading {
+.container #loader {
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
   height: 100%;
   background: #1B1C1D;
-  z-index: -1;
-  opacity: 0;
+  z-index: 1;
 }
-/* line 23, ../../sass/pages/_global.scss */
-.container .loading img {
+/* line 22, ../../sass/pages/_global.scss */
+.container #loader img {
   position: absolute;
   top: 50%;
   left: 50%;
   margin-left: -32px;
   margin-top: -32px;
 }
-/* line 32, ../../sass/pages/_global.scss */
+/* line 31, ../../sass/pages/_global.scss */
 .container .page {
   width: 100%;
   height: 100%;
@@ -1456,7 +1462,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   -moz-transition: opacity ease-in-out 500ms;
   transition: opacity ease-in-out 500ms;
 }
-/* line 40, ../../sass/pages/_global.scss */
+/* line 39, ../../sass/pages/_global.scss */
 .container .page.ng-leave.ng-leave-active {
   -webkit-animation-name: fadeOut;
   -moz-animation-name: fadeOut;
@@ -1474,7 +1480,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   -moz-animation-fill-mode: forwards;
   -ms-animation-fill-mode: forwards;
 }
-/* line 44, ../../sass/pages/_global.scss */
+/* line 43, ../../sass/pages/_global.scss */
 .container .page.ng-enter.ng-enter-active {
   -webkit-animation-name: fadeIn;
   -moz-animation-name: fadeIn;
@@ -1492,7 +1498,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   -moz-animation-fill-mode: forwards;
   -ms-animation-fill-mode: forwards;
 }
-/* line 54, ../../sass/pages/_global.scss */
+/* line 47, ../../sass/pages/_global.scss */
 .container .page .section {
   position: relative;
   overflow: hidden;
@@ -1500,46 +1506,108 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   padding: 100px 30px 30px 30px;
 }
 
-/* line 5, ../../sass/pages/_intro.scss */
-.container .section.intro {
-  background: url("../../images/sections/intro.jpg") 0 0 no-repeat;
+/* line 57, ../../sass/pages/_global.scss */
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  -ms-animation-timing-function: ease;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+}
+
+/* line 61, ../../sass/pages/_global.scss */
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  -moz-animation-name: fadeOut;
+  -ms-animation-name: fadeOut;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  -ms-animation-timing-function: ease;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+}
+
+/* line 9, ../../sass/pages/_intro.scss */
+.container .section.intro video#intro-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: url("../../images/home-cover.jpg") no-repeat;
   background-size: cover;
 }
 
 /* line 5, ../../sass/pages/_gallery.scss */
 .container .section.gallery {
+  opacity: 0;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  -ms-animation-timing-function: ease;
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  -ms-animation-delay: 0.3s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
   background-color: #181818;
 }
-/* line 9, ../../sass/pages/_gallery.scss */
+/* line 11, ../../sass/pages/_gallery.scss */
 .container .section.gallery .gallery-wrapper {
   margin-top: 100px;
 }
-/* line 15, ../../sass/pages/_gallery.scss */
+/* line 17, ../../sass/pages/_gallery.scss */
 .container .section.gallery .gallery-wrapper ul li {
   list-style: none;
   display: inline-block;
 }
-/* line 19, ../../sass/pages/_gallery.scss */
+/* line 21, ../../sass/pages/_gallery.scss */
 .container .section.gallery .gallery-wrapper ul li a {
   display: block;
   width: 300px;
   height: 201px;
 }
-/* line 28, ../../sass/pages/_gallery.scss */
+/* line 30, ../../sass/pages/_gallery.scss */
 .container .section.gallery #zoomImage {
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  /*background: url('http://thecongress-movie.com/files/templates/congress/public/assets/img/ajax-loader.gif?v=1') no-repeat center rgba(0,0,0,.8);*/
+  background: url("../../images/utils/loading.gif") no-repeat center;
   z-index: 1000;
   text-align: left;
-  cursor: url("../../images/close.png"), default;
+  cursor: url("../../images/utils/close.png"), default;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
-/* line 42, ../../sass/pages/_gallery.scss */
+/* line 44, ../../sass/pages/_gallery.scss */
 .container .section.gallery #zoomImage .zoomInner {
   position: absolute;
   top: 0;
@@ -1548,7 +1616,7 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   bottom: 0;
   overflow: hidden;
 }
-/* line 50, ../../sass/pages/_gallery.scss */
+/* line 52, ../../sass/pages/_gallery.scss */
 .container .section.gallery #zoomImage .zoomInner .zoomItem {
   background-size: cover;
   background-position: 50% 50% !important;
@@ -1561,36 +1629,59 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
 
 /* line 6, ../../sass/pages/_synopsis.scss */
 .container .section.synopsis {
+  opacity: 0;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  -ms-animation-timing-function: ease;
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  -ms-animation-delay: 0.3s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
   background: url("../../images/sections/synopsis.jpg") 0 0 no-repeat;
   background-size: cover;
   overflow: hidden;
 }
-/* line 12, ../../sass/pages/_synopsis.scss */
-.container .section.synopsis video#intro-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  background: url("../../images/home-cover.jpg") no-repeat;
-  background-size: cover;
+
+/* line 6, ../../sass/pages/_vfx.scss */
+.container .section.vfx {
+  opacity: 0;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  -ms-animation-timing-function: ease;
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  -ms-animation-delay: 0.3s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
 }
-/* line 25, ../../sass/pages/_synopsis.scss */
-.container .section.synopsis .twentytwenty-wrapper {
+/* line 14, ../../sass/pages/_vfx.scss */
+.container .section.vfx .twentytwenty-wrapper {
   float: left;
   width: calc(100% * 0.33333 - 30px + 0.33333 * 30px);
   margin-right: 30px;
   margin-bottom: 30px;
 }
 /* line 47, ../../sass/core/_elf.scss */
-.container .section.synopsis .twentytwenty-wrapper:last-child {
+.container .section.vfx .twentytwenty-wrapper:last-child {
   margin-right: 0;
 }
 /* line 65, ../../sass/core/_elf.scss */
-.container .section.synopsis .twentytwenty-wrapper:nth-child(3n) {
+.container .section.vfx .twentytwenty-wrapper:nth-child(3n) {
   margin-right: 0;
 }
 

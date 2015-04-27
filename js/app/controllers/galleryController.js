@@ -4,6 +4,17 @@ angular.module('filmsiteApp')
 	.controller('galleryController', ['$scope', function ($scope) {
 		
 		$scope.pageClass = 'page-gallery';
-		$scope.images = ["gallery-1.jpg", "gallery-2.jpg", "gallery-3.jpg"];
+		$scope.galleryImages = [];
+		$scope.imagesReady = false;
+
+		// Dynamically generates images array
+		$scope.getImagesArray = function() {
+			
+			var galleryLength = 4;			
+			for (var i = 1; i <= galleryLength; i++) {
+				$scope.galleryImages.push('gallery-' + i + '.jpg');
+			};
+			$scope.imagesReady = true;
+		}();
 		
 	}])

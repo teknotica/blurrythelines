@@ -18,6 +18,10 @@ angular.module('filmsiteApp')
 					templateUrl: 'js/app/templates/synopsis.html',
 					controller: 'synopsisController'
 				})
+				.when('/vfx', {
+					templateUrl: 'js/app/templates/vfx.html',
+					controller: 'vfxController'
+				})
 				.otherwise({
 					redirectTo: '/intro'
 				});

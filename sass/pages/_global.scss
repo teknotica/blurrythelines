@@ -10,15 +10,14 @@
     background: #1C1C1C;
     height: 100%;
 
-    .loading {
+    #loader {
         position: absolute;
         width: 100%;
         top: 0;
         left: 0;
         height: 100%;
         background: #1B1C1D;
-        z-index: -1;
-        opacity: 0; 
+        z-index: 1;
 
         img {
             position: absolute;
@@ -45,19 +44,20 @@
             @include animation(fadeIn, 1s, ease, 0, forwards);
         }
 
-        &.ng-animate {            
-            .loading {
-                //@include animation(fadeInOut, 3.5s, ease, 0, forwards);
-            }
-        }
-
         .section {        
 
             position: relative;
             overflow: hidden;
             height: 100%;
-            padding: 100px 30px 30px 30px;        
+            padding: 100px 30px 30px 30px;               
         }
-    }
-    
+    }    
+}
+
+.fadeIn {
+    @include animation(fadeIn, 1s, ease, .5s, forwards);
+}
+
+.fadeOut {
+    @include animation(fadeOut, 1s, ease, .5s, forwards);
 }
