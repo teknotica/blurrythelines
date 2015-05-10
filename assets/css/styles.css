@@ -1338,17 +1338,9 @@ div.tabs li.is-selected a:active, div.tabs li.is-selected a:focus {
   -ms-animation-fill-mode: forwards;
 }
 
-/* line 9, ../../sass/pages/_intro.scss */
-.container .section.intro video#intro-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  background: url("../../images/home-cover.jpg") no-repeat;
+/* line 5, ../../sass/pages/_intro.scss */
+.container .section.intro {
+  background: url("../../images/sections/intro.jpg") 0 0 no-repeat;
   background-size: cover;
 }
 

@@ -10,9 +10,9 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('js/app/templates/intro.html',
     "<section class=\"section intro\">\n" +
-    "    <video autoplay loop poster=\"images/sections/intro.jpg\" id=\"intro-video\">\n" +
+    "<!--     <video autoplay loop poster=\"images/sections/intro.jpg\" id=\"intro-video\">\n" +
     "        <source src=\"images/sections/intro.mp4\" type=\"video/mp4\">\n" +
-    "    </video>\n" +
+    "    </video> -->\n" +
     "</section>"
   );
 
