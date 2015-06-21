@@ -1,0 +1,15 @@
+<section class="section gallery" parallex>
+    <div class="inner container">
+        <div class="row">
+            <div class="box no-padding col-md-8 col-sm-12 col-xs-12" centered>
+                <h1><span>05</span> Behind the scenes</h1>
+                <div class="inner-box no-padding">
+                	<ul class="inline-nav">
+                		<li ng-repeat="g in galleries"><a ng-click="loadGallery(g)">{{g.alias}}</a></li>
+                	</ul>
+                    <gallery data="gallery" ng-if="imagesReady"></gallery>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,14 +1,12 @@
-
 <div id="zoomImage" ng-if="zoomActive">
-	<div class="zoomInner">
-		<div class="zoomItem" ng-style="{'background-image': 'url(images/gallery/originals/{{imgZoom}})'}" ng-click="close()"></div>
-	</div>
+    <div class="zoomInner">
+        <div class="zoomItem" ng-style="{'background-image': 'url(images/gallery/{{data.current}}/originals/{{imgZoom}})'}" ng-click="close()"></div>
+    </div>
 </div>
-
 <div class="gallery-wrapper">
-	<ul>
-		<li ng-repeat="img in data">
-			<a ng-click="zoom(img)" ng-style="{'background-image': 'url(images/gallery/thumbs/{{img}})'}"></a>
-		</li>
-	</ul>
+    <div class="gallery-item" ng-repeat="img in data.galleryImages">
+        <div class="image-wrapper col-md-3 col-sm-3">
+            <a class="image" animate-zoom-image ng-click="zoom(img)" ng-style="{'background-image': 'url(images/gallery/{{data.current}}/thumbs/{{img}})'}"></a>
+        </div>
+    </div>
 </div>

@@ -13,7 +13,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 html {
     color: $color-neutral-70;
-    font: 400 $font-size-base $font-family-body;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -24,8 +23,8 @@ html {
 body {
     width: 100%;
     height: 100%;
-    font: normal 300 15px/30px "Helvetica Neue","Arial",sans-serif;
-    color: #fff;
+    font-family: $font-family-body;
+    color: $grey;
     background-color: #22313F;
 }
 
@@ -38,7 +37,25 @@ h1, h2, legend, h3, h4, h5, h6 {
     margin: 0 0 0.25em 0;
 }
 
-h1 { font-size: 2rem; }
+h1 {  
+    position: relative;
+    width: 100%;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.4em;
+    min-height: 60px;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    color: #787878;
+    font-size: 1.3rem;
+    letter-spacing: 1em;
+    background-color: rgba(45, 45, 45, 0.6);
+
+    span {
+        font-size: .6em;
+        letter-spacing: 5px;
+    }
+}
 
 h2,
 legend {
@@ -56,7 +73,7 @@ h6 { font-size: 1rem; }
 
 // Paragraphs
 p {
-    margin-bottom: $spacing;
+    margin-bottom: 2.2em;
 
     &.lead { font-size: $font-size-40; }
 }
@@ -64,11 +81,11 @@ p {
 
 // Links
 a {
-    color: $color-brand-50;
+    color: $grey;
     cursor: pointer;
     text-decoration: none;
 
-    &:hover { color: $color-brand-60; }
+    &:hover { color: $white; }
 }
 
 

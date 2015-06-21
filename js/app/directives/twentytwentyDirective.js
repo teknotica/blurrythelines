@@ -11,7 +11,7 @@ angular.module('filmsiteApp')
 					    default_offset_pct: 0.5, 
 					    orientation: 'horizontal'
 					});  
-		        }, 0, false);
+		        }, 300);
 			}
 		};
 	});

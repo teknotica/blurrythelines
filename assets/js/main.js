@@ -39165,24 +39165,28 @@ angular.module('filmsiteApp')
 		function ($routeProvider, $locationProvider) {
 		
 			$routeProvider
-				.when('/intro', {
-					templateUrl: 'js/app/templates/intro.html',
-					controller: 'introController'
+				.when('/home', {
+					templateUrl: 'js/app/templates/home.html',
+					controller: 'homeController'
 				})
-				.when('/gallery', {
-					templateUrl: 'js/app/templates/gallery.html',
-					controller: 'galleryController'
+				.when('/behind-the-scenes', {
+					templateUrl: 'js/app/templates/behind-the-scenes.html',
+					controller: 'behindController'
 				})
 				.when('/synopsis', {
 					templateUrl: 'js/app/templates/synopsis.html',
 					controller: 'synopsisController'
+				})
+				.when('/crew', {
+					templateUrl: 'js/app/templates/crew.html',
+					controller: 'crewController'
 				})
 				.when('/vfx', {
 					templateUrl: 'js/app/templates/vfx.html',
 					controller: 'vfxController'
 				})
 				.otherwise({
-					redirectTo: '/intro'
+					redirectTo: '/home'
 				});
 		}
 	]);
@@ -39194,6 +39198,28 @@ angular.module('filmsiteApp')
 			mobile: 500,
 			tablet: 800
 		});
+
+angular.module('filmsiteApp')
+
+	.directive('animateZoomImage', ["$timeout", "$rootScope", function($timeout, $rootScope) {
+		
+		return {
+			restrict: 'A',
+			link: function(scope, element, attributes, controller) {
+				
+				// element.bind('click', function() {
+
+				// 	$timeout(function() {						
+				// 		var zoomImage = document.getElementById('zoomImage');
+				// 		zoomImage.className = 'animate-zoomed';
+				// 	}, 200);
+					
+				// 	//element[0].clientWidth
+				// 	//element[0].clientHeight
+				// });
+			}
+		}
+	}])
 
 angular.module('filmsiteApp')
 
@@ -39233,7 +39259,102 @@ angular.module('filmsiteApp')
 
 			}
 		};
-	}]);
+	}])
+angular.module('filmsiteApp')
+
+.directive('burgerIcon', ["$timeout", "utilsService", function($timeout, utilsService) {
+    return {
+        restrict: 'E',
+        replace: 'true',
+        template: '<div id="menu-icon" class="no-animate"><span class="bar top"></span><span class="bar middle"></span><span class="bar bottom"></span></div>',
+        link: function(scope, element, attributes, controller) {
+
+            element.bind('click', function() {
+
+                $timeout(function() {
+					utilsService.openCloseBurger();
+                    utilsService.openCloseOverlay();
+                }, 100);
+
+
+            });
+
+        }
+    }
+}])
+
+angular.module('filmsiteApp')
+
+.directive('centered', ["$timeout", "utilsService", function($timeout, utilsService) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attributes, controller) {
+
+            function centerBox(element) {
+
+                var eWidth = element[0].clientWidth;
+                element[0].style.marginLeft = ((eWidth / 2) * -1) + "px";
+            }
+
+            $timeout(function() {
+                
+                centerBox(element);
+
+                window.onresize = function(e) {
+                    centerBox(element);        
+                };
+
+            }, 200);
+
+
+
+        }
+    }
+}])
+
+
+angular.module('filmsiteApp')
+
+	.directive('imagesloaded', ['', function() {
+		
+		return {
+			restrict: 'AE',
+			link: function(scope, element, attributes, controller) {
+
+			}
+		};
+}])
+angular.module('filmsiteApp')
+    .directive('parallex', function() {
+        return {
+            restrict: "A",
+            link: function(scope, element, attrs) {
+
+                var $window = angular.element(window);
+                var ammount = 0.01;
+
+                $window.bind('mousemove', function(e) {
+
+                    var xpos = e.pageX,
+                        width = e.view.outerWidth,
+                        xmid = width / 2;
+
+                    var xval;
+
+                    if (xpos < xmid) {
+                        xval = "-" + (xmid - xpos);
+                    } else {
+                        xval = xpos - xmid;
+                    }
+
+                    var left = (Math.round(xval * ammount)) + "px";
+                    element[0].style.backgroundPositionX = left;
+
+                });
+            }
+        }
+    })
+
 
 angular.module('filmsiteApp')
 
@@ -39247,14 +39368,14 @@ angular.module('filmsiteApp')
 					    default_offset_pct: 0.5, 
 					    orientation: 'horizontal'
 					});  
-		        }, 0, false);
+		        }, 300);
 			}
 		};
 	}]);
 
 angular.module('filmsiteApp')
 
-	.directive('gallery',function () {
+	.directive('gallery', ["$rootScope", function ($rootScope) {
 
 		return {
 			restrict : "E",
@@ -39264,62 +39385,147 @@ angular.module('filmsiteApp')
 			templateUrl: "js/app/directives/gallery/gallery.html", 
 			link : function (scope, element, attrs) {
 
+				$rootScope.zoomActive = false;
 				scope.zoomActive = false;
 
 				scope.zoom = function(img) {
 					scope.imgZoom = img;
 					scope.zoomActive = true;
+					$rootScope.zoomActive = true;
 				};
 
 				scope.close = function() {
 					scope.imgZoom = '';
+					$rootScope.zoomActive = false;
 					scope.zoomActive = false;
 				};
 			}
 		}
-	})
-
-angular.module('filmsiteApp')
-	
-	.controller('galleryController', ['$scope', function ($scope) {
-		
-		$scope.pageClass = 'page-gallery';
-		$scope.galleryImages = [];
-		$scope.imagesReady = false;
-
-		// Dynamically generates images array
-		$scope.getImagesArray = function() {
-			
-			var galleryLength = 4;			
-			for (var i = 1; i <= galleryLength; i++) {
-				$scope.galleryImages.push('gallery-' + i + '.jpg');
-			};
-			$scope.imagesReady = true;
-		}();
-		
 	}])
+angular.module('filmsiteApp')
+    .service('jsonService', ['$http', '$q', function($http, $q) {
+
+        return {
+
+            getData: function(url) {
+
+                var deferred = $q.defer();
+                $http.get(url).success(function(d) {
+                    deferred.resolve(d);
+                });
+                return deferred.promise;
+            }
+        }
+
+    }])
+
+angular.module('filmsiteApp')
+.service('utilsService', ['$http', function($http) {
+
+    return {
+        
+        hasClass: function(element, cls) {
+            return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+        },
+
+        openCloseBurger: function() {
+
+        	var burger = document.getElementById('menu-icon');
+
+        	if (this.hasClass(burger, 'no-animate')) {
+        		burger.className = '';
+        		burger.className = 'closed';
+        	}
+
+        	if (!this.hasClass(burger, 'open')) {
+        		burger.className = 'animate open';
+        	} else {
+        		burger.className = '';
+        		burger.className = 'animate closed';
+        	}
+        },
+
+        openCloseOverlay: function() {
+
+        	var navOverlay = document.getElementById('nav-overlay');
+
+        	if (!this.hasClass(navOverlay, 'open')) {
+        		navOverlay.className = 'open';
+        	} else {
+        		navOverlay.className = '';
+        		navOverlay.className = 'closed';
+        	}
+
+        }
+    }
+
+}])
+
+angular.module('filmsiteApp')
+.controller('crewController', ['$scope', function($scope) {
+    $scope.pageClass = 'page-crew';
+}])
+angular.module('filmsiteApp')
+
+.controller('behindController', ['$scope', '$rootScope', 'jsonService',
+
+    function($scope, $rootScope, jsonService) {
+
+        $scope.pageClass = 'page-gallery';
+        $scope.gallery = {};
+        $scope.imagesReady = false;
+
+        // Dynamically generates images array
+        $scope.getImagesArray = function() {
+
+            jsonService.getData('js/app/json/gallery.json').then(function(d) {
+                if (d !== undefined) {
+                    
+                    $scope.galleries = d;                    
+                    $scope.gallery['current'] = $scope.galleries[0].name;
+                    $scope.gallery['galleryImages'] = $scope.galleries[0].images;
+                    $scope.imagesReady = true;
+                }
+            });
+            
+        }();
+
+    }
+])
+
 
 angular.module('filmsiteApp')
 	
-	.controller('introController', ['$scope', function ($scope) {
+	.controller('homeController', ['$scope', function ($scope) {
 		
 		$scope.pageClass = 'page-intro';
 		
 	}])
-
 angular.module('filmsiteApp').
-	controller('mainController', ['$scope', function ($scope) {
+controller('mainController', ["$scope", "jsonService", "utilsService", function($scope, jsonService, utilsService) {
 
-	}])
+	// Get menu items from JSON
+	$scope.getMenu = function() {
+		jsonService.getData('js/app/json/menu.json').then(function(d) {
+			if (d !== undefined) {
+				$scope.menuItems = d;
+			}
+		});
+	}();	
 
+	// Check navigation overlay status
+	$scope.checkOverlay = function() {
+		utilsService.openCloseBurger();
+		utilsService.openCloseOverlay();
+	};
+
+}])
 
 angular.module('filmsiteApp')
-	
-	.controller('synopsisController', ['$scope', function ($scope) {
-		
-		$scope.pageClass = 'page-synopsis';	
-		
-	}])
+.controller('synopsisController', ['$scope', function($scope) {
+    $scope.pageClass = 'page-synopsis';
+}])
+
 
 angular.module('filmsiteApp')
 	
@@ -39328,3 +39534,174 @@ angular.module('filmsiteApp')
 		$scope.pageClass = 'page-vfx';
 		
 	}])
+angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
+  'use strict';
+
+  $templateCache.put('js/app/templates/behind-the-scenes.html',
+    "<section class=\"section gallery\" parallex>\n" +
+    "    <div class=\"inner container\">\n" +
+    "        <div class=\"row\">\n" +
+    "            <div class=\"box no-padding col-md-8 col-sm-12 col-xs-12\" centered>\n" +
+    "                <h1><span>05</span> Behind the scenes</h1>\n" +
+    "                <div class=\"inner-box no-padding\">\n" +
+    "                \t<ul class=\"inline-nav\">\n" +
+    "                \t\t<li ng-repeat=\"g in galleries\"><a ng-click=\"loadGallery(g)\">{{g.alias}}</a></li>\n" +
+    "                \t</ul>\n" +
+    "                    <gallery data=\"gallery\" ng-if=\"imagesReady\"></gallery>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</section>"
+  );
+
+
+  $templateCache.put('js/app/templates/crew.html',
+    "<section class=\"section crew\" parallex>\n" +
+    "    <div class=\"inner container\">\n" +
+    "        <div class=\"row\">\n" +
+    "            <div class=\"box no-padding col-md-8 col-sm-12 col-xs-12\" centered>\n" +
+    "                <h1><span>03</span> Crew</h1>\n" +
+    "                <div class=\"inner-box no-padding\">\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 nat\">\n" +
+    "                        <div>\n" +
+    "                            <h2>Natalie Young</h2>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 darren\">\n" +
+    "                        <div>\n" +
+    "                            <h2>Darren Odonoghue</h2>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 jon\">\n" +
+    "                        <div>\n" +
+    "                            <h2>Jon Warnes</h2>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 josh\">\n" +
+    "                        <div>\n" +
+    "                            <h2>Josh Bucker</h2>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 silvia\">\n" +
+    "                        <div>\n" +
+    "                            <h2>Silvia Rebelo</h2>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 extra\"></div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</section>\n"
+  );
+
+
+  $templateCache.put('js/app/templates/home.html',
+    "<section class=\"section home\" parallex>\n" +
+    "</section>\n"
+  );
+
+
+  $templateCache.put('js/app/templates/nav.html',
+    "<div id=\"nav-overlay\" class=\"no-animate closed\">    \n" +
+    "    <nav id=\"nav\">\n" +
+    "        <ul class=\"navigation\">\n" +
+    "            <li ng-repeat=\"item in menuItems\">\n" +
+    "            \t<span>\n" +
+    "            \t\t<a href=\"#{{item.url}}\" ng-click=\"checkOverlay()\"><span>0{{$index+1}}</span> {{item.label}}</a>\t\n" +
+    "            \t</span>            \t\n" +
+    "            </li>\n" +
+    "        </ul>\n" +
+    "    </nav>\n" +
+    "</div>\n" +
+    "<div class=\"title\"><a href=\"#home\">Blurring the lines</a></div>\n" +
+    "<burger-icon></burger-icon>\n"
+  );
+
+
+  $templateCache.put('js/app/templates/synopsis.html',
+    "<section class=\"section synopsis\" parallex>\n" +
+    "    <div class=\"inner container\">\n" +
+    "        <div class=\"row\">\n" +
+    "            <div class=\"box no-padding col-md-6 col-sm-8 col-xs-12\" centered>\n" +
+    "                <h1><span>02</span> Synopsis</h1>\n" +
+    "                <div class=\"inner-box\">\n" +
+    "                    <p>Blurring the lines is about consectetur adipisicing elit. Ullam esse sed eius. Nesciunt, laudantium perferendis. Recusandae natus facilis fugit corporis maiores quis earum aperiam reprehenderit laborum dicta. Ipsa minus, consequuntur.</p>\n" +
+    "                    <p>Sint officia quaerat deleniti eligendi perferendis. Enim quam minus hic provident voluptates assumenda dolores id ipsum, ipsa necessitatibus maxime labore optio modi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam esse sed eius. Nesciunt, laudantium perferendis. Recusandae natus facilis fugit corporis maiores quis earum aperiam reprehenderit laborum dicta. Ipsa minus, consequuntur.</p>\n" +
+    "                    <p>Sint officia quaerat deleniti eligendi perferendis. Enim quam minus hic provident voluptates assumenda dolores id ipsum, ipsa necessitatibus maxime labore optio modi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam esse sed eius. Nesciunt, laudantium perferendis.</p>\n" +
+    "                </div>                \n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</section>\n"
+  );
+
+
+  $templateCache.put('js/app/templates/vfx.html',
+    "<section class=\"section vfx\" parallex>\n" +
+    "    <div class=\"inner container\">\n" +
+    "        <div class=\"row\">\n" +
+    "            <div class=\"box no-padding col-md-8 col-sm-12 col-xs-12\" centered>\n" +
+    "                <h1><span>04</span> VFX</h1>\n" +
+    "                <div class=\"inner-box no-padding\">\n" +
+    "                    <div class=\"vfx-item col-md-4\">\n" +
+    "                        <div class=\"vfx-item twentytwenty-container\" twentytwenty>\n" +
+    "                        \t<img src=\"images/vfx/1_1.png\" />\n" +
+    "                          \t<img src=\"images/vfx/1_2.png\" />\n" +
+    "                        </div>  \n" +
+    "                    </div>\n" +
+    "                    <div class=\"vfx-item col-md-4\">\n" +
+    "                        <div class=\"vfx-item twentytwenty-container\" twentytwenty>\n" +
+    "                        \t<img src=\"images/vfx/1_1.png\" />\n" +
+    "                          \t<img src=\"images/vfx/1_2.png\" />\n" +
+    "                        </div>  \n" +
+    "                    </div>\n" +
+    "                    <div class=\"vfx-item col-md-4\">\n" +
+    "                        <div class=\"vfx-item twentytwenty-container\" twentytwenty>\n" +
+    "                        \t<img src=\"images/vfx/1_1.png\" />\n" +
+    "                          \t<img src=\"images/vfx/1_2.png\" />\n" +
+    "                        </div>  \n" +
+    "                    </div>\n" +
+    "                    <div class=\"vfx-item col-md-4\">\n" +
+    "                        <div class=\"vfx-item twentytwenty-container\" twentytwenty>\n" +
+    "                        \t<img src=\"images/vfx/1_1.png\" />\n" +
+    "                          \t<img src=\"images/vfx/1_2.png\" />\n" +
+    "                        </div>  \n" +
+    "                    </div>\n" +
+    "                    <div class=\"vfx-item col-md-4\">\n" +
+    "                        <div class=\"vfx-item twentytwenty-container\" twentytwenty>\n" +
+    "                        \t<img src=\"images/vfx/1_1.png\" />\n" +
+    "                          \t<img src=\"images/vfx/1_2.png\" />\n" +
+    "                        </div>  \n" +
+    "                    </div>\n" +
+    "                    <div class=\"vfx-item col-md-4\">\n" +
+    "                        <div class=\"vfx-item twentytwenty-container\" twentytwenty>\n" +
+    "                        \t<img src=\"images/vfx/1_1.png\" />\n" +
+    "                          \t<img src=\"images/vfx/1_2.png\" />\n" +
+    "                        </div>  \n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</section>\n"
+  );
+
+
+  $templateCache.put('js/app/directives/gallery/gallery.html',
+    "<div id=\"zoomImage\" ng-if=\"zoomActive\">\n" +
+    "    <div class=\"zoomInner\">\n" +
+    "        <div class=\"zoomItem\" ng-style=\"{'background-image': 'url(images/gallery/{{data.current}}/originals/{{imgZoom}})'}\" ng-click=\"close()\"></div>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "<div class=\"gallery-wrapper\">\n" +
+    "    <div class=\"gallery-item\" ng-repeat=\"img in data.galleryImages\">\n" +
+    "        <div class=\"image-wrapper col-md-3 col-sm-3\">\n" +
+    "            <a class=\"image\" animate-zoom-image ng-click=\"zoom(img)\" ng-style=\"{'background-image': 'url(images/gallery/{{data.current}}/thumbs/{{img}})'}\"></a>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>\n"
+  );
+
+}]);

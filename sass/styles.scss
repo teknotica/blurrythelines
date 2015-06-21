@@ -10,6 +10,7 @@
 
 // Core
 
+"core/_bootstrap",
 "core/_settings", // Set up your settings and variables first
 "core/_mixins",
 "core/_grid",
@@ -17,7 +18,6 @@
 "core/_base",
 "core/_states",
 "core/_layout",
-
 
 // Shared components
 // Components can be used generic through the application and are not connected to content.
@@ -41,12 +41,11 @@
 // Example: the module 'product' can't be used for a 'blog-article'.
 
 "pages/_global",
-"pages/_intro",
+"pages/_home",
 "pages/_gallery",
 "pages/_synopsis",
 "pages/_vfx",
-
+"pages/_crew",
 
 // Print
-
 "core/_print";

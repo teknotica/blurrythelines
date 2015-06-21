@@ -1,19 +1,23 @@
 <!doctype html>
 <html ng-app="filmsiteApp">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Film Site</title>
-        <link rel="stylesheet" href="assets/css/main.css">
-    </head>
-    <body class="{{breakpoint}}" ng-controller="mainController" breakpoint>
-        
-        <div id="main" class="container">
-            <header id="header" ng-include="'js/app/templates/nav.html'" ng-if="!zoomActive"></header>
-            <div class="page {{pageClass}}" ng-view></div>            
-        </div>		
-    
-		<script src="assets/js/main.min.js"></script>       
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blurring the Lines Film</title>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=News+Cycle' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body class="{{breakpoint}}" ng-controller="mainController" breakpoint>
+    <div id="main">
+        <header id="header" ng-include="'js/app/templates/nav.html'" ng-if="!zoomActive"></header>
+        <div class="page {{pageClass}}" ng-view></div>
+    </div>
+    <script src="//localhost:35729/livereload.js"></script>
+    <!-- <script src="assets/js/main.min.js"></script> -->
+    <script src="assets/js/main.js"></script>
+</body>
+
 </html>

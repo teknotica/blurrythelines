@@ -1,0 +1,19 @@
+[{
+    "url": "home",
+    "label": "Home"
+}, {
+    "url": "synopsis",
+    "label": "Synopsis"
+}, {
+    "url": "crew",
+    "label": "Crew"
+}, {
+    "url": "vfx",
+    "label": "VFX"
+}, {
+    "url": "behind-the-scenes",
+    "label": "Behind the scenes"
+}, {
+    "url": "contact",
+    "label": "Contact"
+}]

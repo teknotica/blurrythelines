@@ -1,46 +1,168 @@
-
 @include keyframes(fadeOut) {
-    from { 
-    	opacity:1; 
-   	}
-    to { 
-    	opacity:0; 
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 
 @include keyframes(fadeIn) {
-	from {
-    	opacity: 0;
-  	}
-  	to {
-    	opacity: 1;
-  	} 
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @include keyframes(fadeInOut) {
-	0% {
-    	opacity: 0;
-  	}
-  	30% {
-    	opacity: 1;
-    	z-index: 3;
-  	} 
-	100% {
-    	opacity: 0;
-    	z-index: -1;
-  	} 
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+        z-index: 3;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
 }
 
 @include keyframes(scaleDown) {
-	from { }
-	to { 
-		@include transform(scale(.8));
-	}
+    from {}
+    to {
+        @include transform(scale(.8));
+    }
 }
 
 @include keyframes(scaleUpDown) {
-	from { 
-		@include transform(scale(1.2));
-	}
+    from {
+        @include transform(scale(1.2));
+    }
 }
 
+@include keyframes(burger-top) {
+    0% {
+        top: 0;
+        transform: rotate(0deg);
+    }
+    50% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    70% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 13px;
+        transform: rotate(-45deg);
+    }
+}
+
+@include keyframes(burger-middle) {
+    0% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    50% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    70% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 13px;
+        transform: rotate(-45deg);
+    }
+}
+
+@include keyframes(burger-bottom) {
+    0% {
+        top: 26px;
+        transform: rotate(0deg);
+    }
+    50% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    70% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 13px;
+        transform: rotate(45deg);
+    }
+}
+
+@include keyframes(burger-top-open) {
+    0% {
+        top: 13px;
+        transform: rotate(-45deg);
+    }
+    50% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    70% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 0;
+        transform: rotate(0deg);
+    }
+}
+
+@include keyframes(burger-middle-open) {
+    0% {
+        top: 13px;
+        transform: rotate(-45deg);
+    }
+    50% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    70% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+}
+
+@include keyframes(burger-bottom-open) {
+    0% {
+        top: 13px;
+        transform: rotate(45deg);
+    }
+    50% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    70% {
+        top: 13px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 26px;
+        transform: rotate(0deg);
+    }
+}
+
+@include keyframes(hover-animate) {
+    from {
+        width: 0;
+    }
+    to {
+        opacity: 1;
+        width: 100%
+    }
+}

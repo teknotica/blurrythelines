@@ -1,7 +1,7 @@
 
 angular.module('filmsiteApp')
 	
-	.controller('introController', ['$scope', function ($scope) {
+	.controller('homeController', ['$scope', function ($scope) {
 		
 		$scope.pageClass = 'page-intro';
 		

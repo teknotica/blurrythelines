@@ -1,25 +1,10 @@
 // =========== Settings
-
-@font-face {
-    font-family: 'airship_27regular';
-    src: url('../../fonts/airship_27/airship_27-regular-webfont.eot');
-    src: url('../../fonts/airship_27/airship_27-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/airship_27/airship_27-regular-webfont.woff2') format('woff2'),
-         url('../../fonts/airship_27/airship_27-regular-webfont.woff') format('woff'),
-         url('../../fonts/airship_27/airship_27-regular-webfont.ttf') format('truetype'),
-         url('../../fonts/airship_27/airship_27-regular-webfont.svg#airship_27regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 // Most of the variables are based on some kind of percentages to maintain stability.
 // So $variable-10 is small or light and $variable-100 is big or dark.
 
-
 // Set your own font
-$font-family-body: sans-serif;
-$font-family-heading: "Helvetica Neue","Arial",sans-serif;
+$font-family-heading: 'News Cycle', sans-serif;
+$font-family-body: 'Inconsolata';
 
 
 // The base font-size, all other elements will adjust to this value
@@ -79,8 +64,8 @@ $color-success-50: #39b924; // Default
 $color-success-60: #249c11;
 
 // Color alert
-$color-alert-50: #f3490d; // Default
-$color-alert-60: #d33e09;
+$color-alert-50: #611427; // Default
+$color-alert-60: #611427;
 
 // Color neutral
 $color-neutral-10: #eef2f0;
@@ -92,3 +77,5 @@ $color-neutral-90: #232725;
 // Color basics
 $black: #000;
 $white: #fff;
+$grey: #C8C8C8;
+$red: #611427;

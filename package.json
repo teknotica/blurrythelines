@@ -16,6 +16,7 @@
         "grunt-contrib-uglify":     "*",
         "grunt-htmlhint":           "*",
         "grunt-ng-annotate":        "*",
+        "grunt-contrib-connect":    "*",
         "matchdep":                 "*"
     }
 }

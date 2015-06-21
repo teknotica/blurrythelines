@@ -1,16 +1,9 @@
-
-.container {
-    
-    .section {          
-
-        &.synopsis {
-
-            opacity: 0;
-            @include animation(fadeIn, 1s, ease, .3s, forwards);     
-            background: url('../../images/sections/synopsis.jpg') 0 0 no-repeat;
-            background-size: cover;
-            overflow: hidden;
-
-        }
+.section {
+    &.synopsis {
+        opacity: 0;
+        @include animation(fadeIn, 1s, ease, .5s, forwards);
+        background: url('../../images/sections/synopsis.jpg') 0 0 no-repeat;
+        background-size: cover;
+        overflow: hidden;
     }
 }

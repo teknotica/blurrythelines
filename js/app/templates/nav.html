@@ -1,7 +1,13 @@
-
-    <ul class="navigation">
-        <li><a href="#intro">Trailer</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#synopsis">Synopsis</a></li>
-        <li><a href="#vfx">VFX</a></li>
-    </ul>
+<div id="nav-overlay" class="no-animate closed">    
+    <nav id="nav">
+        <ul class="navigation">
+            <li ng-repeat="item in menuItems">
+            	<span>
+            		<a href="#{{item.url}}" ng-click="checkOverlay()"><span>0{{$index+1}}</span> {{item.label}}</a>	
+            	</span>            	
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="title"><a href="#home">Blurring the lines</a></div>
+<burger-icon></burger-icon>
