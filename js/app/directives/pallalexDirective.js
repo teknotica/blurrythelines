@@ -5,7 +5,7 @@ angular.module('filmsiteApp')
             link: function(scope, element, attrs) {
 
                 var $window = angular.element(window);
-                var ammount = 0.01;
+                var ammount = 0.005;
 
                 $window.bind('mousemove', function(e) {
 

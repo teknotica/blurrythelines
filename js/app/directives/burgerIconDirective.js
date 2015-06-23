@@ -1,5 +1,4 @@
 angular.module('filmsiteApp')
-
 .directive('burgerIcon', function($timeout, utilsService) {
     return {
         restrict: 'E',
@@ -8,13 +7,10 @@ angular.module('filmsiteApp')
         link: function(scope, element, attributes, controller) {
 
             element.bind('click', function() {
-
                 $timeout(function() {
-					utilsService.openCloseBurger();
+                    utilsService.openCloseBurger();
                     utilsService.openCloseOverlay();
                 }, 100);
-
-
             });
 
         }

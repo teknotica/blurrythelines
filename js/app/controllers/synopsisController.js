@@ -1,4 +1,4 @@
 angular.module('filmsiteApp')
-.controller('synopsisController', ['$scope', function($scope) {
+.controller('synopsisController', function($scope) {
     $scope.pageClass = 'page-synopsis';
-}])
+})

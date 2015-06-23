@@ -11,25 +11,6 @@
             padding-bottom: 33.33333%!important;
             cursor: pointer;
 
-            &.nat {            	
-            	background: url('../../images/crew/nat.jpg') 0 0 no-repeat;
-            }
-            &.darren {            	
-            	background: url('../../images/crew/darren.jpg') 0 0 no-repeat;
-            }
-            &.jon {            	
-            	background: url('../../images/crew/jon.jpg') 0 0 no-repeat;
-            }
-            &.josh {            	
-            	background: url('../../images/crew/josh.jpg') 0 0 no-repeat;
-            }
-            &.silvia {            	
-            	background: url('../../images/crew/silvia.jpg') 0 0 no-repeat;
-            }
-            // &.extra {            	
-            // 	background: url('../../images/crew/extra.jpg') 0 0 no-repeat;
-            // }
-
 			&:hover {
 				div {
 					background: rgba(95, 18, 8, 0.5);
@@ -52,12 +33,15 @@
                 	position: relative;
                 	top: 50%;
                 	text-align: center;
-                	-webkit-transform: translateY(-50%);
-                	-ms-transform: translateY(-50%);
-                	transform: translateY(-50%);
+                    @include transform(translateY(-50%));
                 	letter-spacing: .4em;
                 }
             }
         }
     }
+}
+
+.example-one {
+  font-size: 100px;
+  @include textGlitch("example-one", 17, white, rgba(28, 28, 28, 0.95), red, blue, 450, 115);
 }

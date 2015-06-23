@@ -1,0 +1,26 @@
+[{
+    "name": "Natalie Young",
+    "alias": "nat",
+    "role": "Director / Nuke / VFX",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim est maiores culpa omnis laborum error quas ducimus, sequi dolores necessitatibus molestiae. Iusto repellat et modi ab labore enim earum dignissimos!"
+}, {
+    "name": "Darren Odonoghue",
+    "alias": "darren",
+    "role": "DOP",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim est maiores culpa omnis laborum error quas ducimus, sequi dolores necessitatibus molestiae. Iusto repellat et modi ab labore enim earum dignissimos!"
+}, {
+    "name": "Jon Warnes",
+    "alias": "jon",
+    "role": "Music compositor / Sounds Effects",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim est maiores culpa omnis laborum error quas ducimus, sequi dolores necessitatibus molestiae. Iusto repellat et modi ab labore enim earum dignissimos!"
+}, {
+    "name": "Josh Buckler",
+    "alias": "josh",
+    "role": "Camera Assistant",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim est maiores culpa omnis laborum error quas ducimus, sequi dolores necessitatibus molestiae. Iusto repellat et modi ab labore enim earum dignissimos!"
+}, {
+    "name": "Silvia Rebelo",
+    "alias": "silvia",
+    "role": "Drone Operator / Make Up",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim est maiores culpa omnis laborum error quas ducimus, sequi dolores necessitatibus molestiae. Iusto repellat et modi ab labore enim earum dignissimos!"
+}]

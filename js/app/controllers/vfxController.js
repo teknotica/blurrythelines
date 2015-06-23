@@ -1,8 +1,4 @@
-
 angular.module('filmsiteApp')
-	
-	.controller('vfxController', ['$scope', function ($scope) {
-		
-		$scope.pageClass = 'page-vfx';
-		
-	}])
+.controller('vfxController', function($scope) {
+    $scope.pageClass = 'page-vfx';
+})

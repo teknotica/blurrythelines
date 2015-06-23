@@ -7,7 +7,7 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"box no-padding col-md-8 col-sm-12 col-xs-12\" centered>\n" +
     "                <h1><span>05</span> Behind the scenes</h1>\n" +
-    "                <div class=\"inner-box no-padding\">\n" +
+    "                <div class=\"inner-box no-padding\" ng-if=\"galleries.length\">\n" +
     "                \t<ul class=\"inline-nav\">\n" +
     "                \t\t<li ng-repeat=\"g in galleries\"><a ng-click=\"loadGallery(g)\">{{g.alias}}</a></li>\n" +
     "                \t</ul>\n" +
@@ -26,33 +26,17 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"box no-padding col-md-8 col-sm-12 col-xs-12\" centered>\n" +
     "                <h1><span>03</span> Crew</h1>\n" +
-    "                <div class=\"inner-box no-padding\">\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 nat\">\n" +
+    "                <div class=\"inner-box no-padding\" ng-if=\"crew.length\">\n" +
+    "                    <div ng-repeat=\"c in crew\" class=\"crew-member col-md-4 col-sm-4 {{c.alias}}\" ng-click=\"loadBio(c)\" ng-style=\"{'background': 'url(images/crew/{{c.alias}}.jpg) no-repeat 0 0'}\">\n" +
     "                        <div>\n" +
-    "                            <h2>Natalie Young</h2>\n" +
+    "                            <h2>{{c.name}}</h2>\n" +
     "                        </div>\n" +
     "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 darren\">\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 thanks\">\n" +
     "                        <div>\n" +
-    "                            <h2>Darren Odonoghue</h2>\n" +
+    "                            <h2>Special Thanks</h2>\n" +
     "                        </div>\n" +
     "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 jon\">\n" +
-    "                        <div>\n" +
-    "                            <h2>Jon Warnes</h2>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 josh\">\n" +
-    "                        <div>\n" +
-    "                            <h2>Josh Bucker</h2>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 silvia\">\n" +
-    "                        <div>\n" +
-    "                            <h2>Silvia Rebelo</h2>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 extra\"></div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +

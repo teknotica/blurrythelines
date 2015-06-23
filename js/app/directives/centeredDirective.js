@@ -1,5 +1,4 @@
 angular.module('filmsiteApp')
-
 .directive('centered', function($timeout, utilsService) {
     return {
         restrict: 'A',
@@ -12,16 +11,14 @@ angular.module('filmsiteApp')
             }
 
             $timeout(function() {
-                
+
                 centerBox(element);
 
                 window.onresize = function(e) {
-                    centerBox(element);        
+                    centerBox(element);
                 };
 
             }, 200);
-
-
 
         }
     }

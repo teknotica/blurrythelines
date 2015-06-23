@@ -39198,70 +39198,65 @@ angular.module('filmsiteApp')
 			mobile: 500,
 			tablet: 800
 		});
+angular.module('filmsiteApp')
+.directive('animateZoomImage', ["$timeout", "$rootScope", function($timeout, $rootScope) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attributes, controller) {
+            // element.bind('click', function() {
+
+            // 	$timeout(function() {						
+            // 		var zoomImage = document.getElementById('zoomImage');
+            // 		zoomImage.className = 'animate-zoomed';
+            // 	}, 200);
+
+            // 	//element[0].clientWidth
+            // 	//element[0].clientHeight
+            // });
+        }
+    }
+}])
 
 angular.module('filmsiteApp')
+.directive('breakpoint', ['CONST', function(CONST) {
 
-	.directive('animateZoomImage', ["$timeout", "$rootScope", function($timeout, $rootScope) {
-		
-		return {
-			restrict: 'A',
-			link: function(scope, element, attributes, controller) {
-				
-				// element.bind('click', function() {
+    return {
+        restrict: 'AE',
+        link: function(scope, element, attributes, controller) {
 
-				// 	$timeout(function() {						
-				// 		var zoomImage = document.getElementById('zoomImage');
-				// 		zoomImage.className = 'animate-zoomed';
-				// 	}, 200);
-					
-				// 	//element[0].clientWidth
-				// 	//element[0].clientHeight
-				// });
-			}
-		}
-	}])
+            var tablet = CONST.tablet,
+                mobile = CONST.mobile;
+
+            // Get viewport size	
+            getViewport = function(currentSize) {
+
+                if (currentSize > tablet) {
+                    return 'desktop';
+                } else if ((currentSize > mobile) && (currentSize <= tablet)) {
+                    return 'tablet';
+                } else if (currentSize <= mobile) {
+                    return 'mobile';
+                }
+
+            };
+
+            // Initial load
+            scope.$root.breakpoint = getViewport(window.innerWidth);
+
+            // On window resize
+            window.onresize = function(e) {
+
+                scope.$apply(function() {
+                    scope.$root.breakpoint = getViewport(window.innerWidth);
+                });
+
+            }
+
+        }
+    };
+}])
 
 angular.module('filmsiteApp')
-
-	.directive('breakpoint', ['CONST', function(CONST) {
-		
-		return {
-			restrict: 'AE',
-			link: function(scope, element, attributes, controller) {
-
-				var tablet = CONST.tablet,
-					mobile = CONST.mobile;
-
-				// Get viewport size	
-				getViewport = function(currentSize) {
-
-					if (currentSize > tablet) {
-						return 'desktop';
-					} else if ((currentSize > mobile) && (currentSize <= tablet)) {
-						return 'tablet';
-					} else if (currentSize <= mobile) {
-						return 'mobile';
-					}
-
-				};
-
-				// Initial load
-				scope.$root.breakpoint = getViewport(window.innerWidth);
-
-				// On window resize
-				window.onresize = function(e) {
-					
-					scope.$apply(function() {
-						scope.$root.breakpoint = getViewport(window.innerWidth);						
-					});
-
-				}
-
-			}
-		};
-	}])
-angular.module('filmsiteApp')
-
 .directive('burgerIcon', ["$timeout", "utilsService", function($timeout, utilsService) {
     return {
         restrict: 'E',
@@ -39270,13 +39265,10 @@ angular.module('filmsiteApp')
         link: function(scope, element, attributes, controller) {
 
             element.bind('click', function() {
-
                 $timeout(function() {
-					utilsService.openCloseBurger();
+                    utilsService.openCloseBurger();
                     utilsService.openCloseOverlay();
                 }, 100);
-
-
             });
 
         }
@@ -39284,7 +39276,6 @@ angular.module('filmsiteApp')
 }])
 
 angular.module('filmsiteApp')
-
 .directive('centered', ["$timeout", "utilsService", function($timeout, utilsService) {
     return {
         restrict: 'A',
@@ -39297,33 +39288,72 @@ angular.module('filmsiteApp')
             }
 
             $timeout(function() {
-                
+
                 centerBox(element);
 
                 window.onresize = function(e) {
-                    centerBox(element);        
+                    centerBox(element);
                 };
 
             }, 200);
-
-
 
         }
     }
 }])
 
-
 angular.module('filmsiteApp')
+.directive('glitchImage', ["$timeout", "utilsService", function($timeout, utilsService) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attributes, controller) {
 
-	.directive('imagesloaded', ['', function() {
-		
-		return {
-			restrict: 'AE',
-			link: function(scope, element, attributes, controller) {
+            var canvas = document.getElementById(attributes.id),
+                context = canvas.getContext('2d'),
+                img = new Image(),
+                w, h, offset, glitchInterval;
 
-			}
-		};
+            img.src = 'http://blog.codepen.io/wp-content/uploads/2012/06/White-Large.png';
+            img.onload = function() {
+                init();
+                window.onresize = init;
+            };
+
+            var init = function() {
+                clearInterval(glitchInterval);
+                canvas.width = w = window.innerWidth;
+                offset = w * .1;
+                canvas.height = h = ~~(175 * ((w - (offset * 2)) / img.width));
+                glitchInterval = setInterval(function() {
+                    clear();
+                    context.drawImage(img, 0, 110, img.width, 175, offset, 0, w - (offset * 2), h);
+                    setTimeout(glitchImg, randInt(250, 1000));
+                }, 500);
+            };
+
+            var clear = function() {
+                context.rect(0, 0, w, h);
+                context.fill();
+            };
+
+            var glitchImg = function() {
+                for (var i = 0; i < randInt(1, 13); i++) {
+                    var x = Math.random() * w;
+                    var y = Math.random() * h;
+                    var spliceWidth = w - x;
+                    var spliceHeight = randInt(5, h / 3);
+                    context.drawImage(canvas, 0, y, spliceWidth, spliceHeight, x, y, spliceWidth, spliceHeight);
+                    context.drawImage(canvas, spliceWidth, y, x, spliceHeight, 0, y, x, spliceHeight);
+                }
+            };
+
+            var randInt = function(a, b) {
+                return ~~(Math.random() * (b - a) + a);
+            };
+
+        }
+    }
 }])
+
 angular.module('filmsiteApp')
     .directive('parallex', function() {
         return {
@@ -39331,7 +39361,7 @@ angular.module('filmsiteApp')
             link: function(scope, element, attrs) {
 
                 var $window = angular.element(window);
-                var ammount = 0.01;
+                var ammount = 0.005;
 
                 $window.bind('mousemove', function(e) {
 
@@ -39462,14 +39492,26 @@ angular.module('filmsiteApp')
 }])
 
 angular.module('filmsiteApp')
-.controller('crewController', ['$scope', function($scope) {
+.controller('crewController', ["$scope", "jsonService", function($scope, jsonService) {
+    
     $scope.pageClass = 'page-crew';
+
+    $scope.getCrew = function() {
+    	jsonService.getData('js/app/json/crew.json').then(function(d) {
+    		if (d !== undefined) {
+    			$scope.crew = d;
+    		}
+    	});
+    }();
+
+    $scope.loadBio = function(c) {
+    	console.log(c);
+    };
+
+
 }])
 angular.module('filmsiteApp')
-
-.controller('behindController', ['$scope', '$rootScope', 'jsonService',
-
-    function($scope, $rootScope, jsonService) {
+.controller('behindController', ["$scope", "$rootScope", "jsonService", function($scope, $rootScope, jsonService) {
 
         $scope.pageClass = 'page-gallery';
         $scope.gallery = {};
@@ -39479,8 +39521,7 @@ angular.module('filmsiteApp')
         $scope.getImagesArray = function() {
 
             jsonService.getData('js/app/json/gallery.json').then(function(d) {
-                if (d !== undefined) {
-                    
+                if (d !== undefined) {                    
                     $scope.galleries = d;                    
                     $scope.gallery['current'] = $scope.galleries[0].name;
                     $scope.gallery['galleryImages'] = $scope.galleries[0].images;
@@ -39490,17 +39531,13 @@ angular.module('filmsiteApp')
             
         }();
 
-    }
-])
-
+    }])
 
 angular.module('filmsiteApp')
-	
-	.controller('homeController', ['$scope', function ($scope) {
-		
-		$scope.pageClass = 'page-intro';
-		
-	}])
+.controller('homeController', ["$scope", function($scope) {
+    $scope.pageClass = 'page-intro';
+}])
+
 angular.module('filmsiteApp').
 controller('mainController', ["$scope", "jsonService", "utilsService", function($scope, jsonService, utilsService) {
 
@@ -39522,18 +39559,15 @@ controller('mainController', ["$scope", "jsonService", "utilsService", function(
 }])
 
 angular.module('filmsiteApp')
-.controller('synopsisController', ['$scope', function($scope) {
+.controller('synopsisController', ["$scope", function($scope) {
     $scope.pageClass = 'page-synopsis';
 }])
 
-
 angular.module('filmsiteApp')
-	
-	.controller('vfxController', ['$scope', function ($scope) {
-		
-		$scope.pageClass = 'page-vfx';
-		
-	}])
+.controller('vfxController', ["$scope", function($scope) {
+    $scope.pageClass = 'page-vfx';
+}])
+
 angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
   'use strict';
 
@@ -39543,7 +39577,7 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"box no-padding col-md-8 col-sm-12 col-xs-12\" centered>\n" +
     "                <h1><span>05</span> Behind the scenes</h1>\n" +
-    "                <div class=\"inner-box no-padding\">\n" +
+    "                <div class=\"inner-box no-padding\" ng-if=\"galleries.length\">\n" +
     "                \t<ul class=\"inline-nav\">\n" +
     "                \t\t<li ng-repeat=\"g in galleries\"><a ng-click=\"loadGallery(g)\">{{g.alias}}</a></li>\n" +
     "                \t</ul>\n" +
@@ -39562,33 +39596,17 @@ angular.module('filmsiteApp').run(['$templateCache', function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"box no-padding col-md-8 col-sm-12 col-xs-12\" centered>\n" +
     "                <h1><span>03</span> Crew</h1>\n" +
-    "                <div class=\"inner-box no-padding\">\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 nat\">\n" +
+    "                <div class=\"inner-box no-padding\" ng-if=\"crew.length\">\n" +
+    "                    <div ng-repeat=\"c in crew\" class=\"crew-member col-md-4 col-sm-4 {{c.alias}}\" ng-click=\"loadBio(c)\" ng-style=\"{'background': 'url(images/crew/{{c.alias}}.jpg) no-repeat 0 0'}\">\n" +
     "                        <div>\n" +
-    "                            <h2>Natalie Young</h2>\n" +
+    "                            <h2>{{c.name}}</h2>\n" +
     "                        </div>\n" +
     "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 darren\">\n" +
+    "                    <div class=\"crew-member col-md-4 col-sm-4 thanks\">\n" +
     "                        <div>\n" +
-    "                            <h2>Darren Odonoghue</h2>\n" +
+    "                            <h2>Special Thanks</h2>\n" +
     "                        </div>\n" +
     "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 jon\">\n" +
-    "                        <div>\n" +
-    "                            <h2>Jon Warnes</h2>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 josh\">\n" +
-    "                        <div>\n" +
-    "                            <h2>Josh Bucker</h2>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 silvia\">\n" +
-    "                        <div>\n" +
-    "                            <h2>Silvia Rebelo</h2>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"crew-member col-md-4 col-sm-4 extra\"></div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
